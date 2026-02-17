@@ -142,42 +142,63 @@ export function Header() {
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px] flex flex-col p-0">
                 <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
                 <SheetDescription className="sr-only">Navigate through the site</SheetDescription>
-                <div className="flex flex-col h-full mt-8">
-                  <div className="space-y-6">
-                    <div className="relative">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-                      <Input
-                        placeholder="Search products..."
-                        className="pl-9 bg-gray-50 border-gray-200"
-                      />
+
+                <div className="p-6 border-b border-gray-100">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                      <User className="w-5 h-5 text-gray-600" />
                     </div>
-
-                    <nav className="flex flex-col space-y-4">
-                      {navLinks.map((link) => (
-                        <Link
-                          key={link.path}
-                          to={link.path}
-                          className="text-lg font-medium hover:text-gray-600 border-b border-gray-100 pb-2"
-                        >
-                          {link.name}
-                        </Link>
-                      ))}
-                    </nav>
-
-                    <div className="pt-6 border-t border-gray-100 space-y-4">
-                      <Link to="/account" className="flex items-center space-x-3 text-gray-600 hover:text-black">
-                        <User className="w-5 h-5" />
-                        <span>My Account</span>
-                      </Link>
-                      <Link to="/wishlist" className="flex items-center space-x-3 text-gray-600 hover:text-black">
-                        <Heart className="w-5 h-5" />
-                        <span>Wishlist</span>
-                      </Link>
+                    <div>
+                      <p className="font-semibold text-lg">Guest User</p>
+                      <p className="text-sm text-gray-500">Welcome to Comfit</p>
                     </div>
                   </div>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                    <Input
+                      placeholder="Search products..."
+                      className="pl-9 bg-gray-50 border-gray-200 w-full"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex-1 overflow-y-auto py-6 px-6">
+                  <nav className="flex flex-col space-y-1">
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        className={cn(
+                          "px-4 py-3 text-lg font-medium rounded-lg transition-colors",
+                          location.pathname === link.path
+                            ? "bg-black text-white"
+                            : "text-gray-700 hover:bg-gray-100"
+                        )}
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </nav>
+
+                  <div className="mt-8 pt-6 border-t border-gray-100 space-y-2">
+                    <Link to="/account" className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                      <User className="w-5 h-5" />
+                      <span className="font-medium">My Account</span>
+                    </Link>
+                    <Link to="/wishlist" className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                      <Heart className="w-5 h-5" />
+                      <span className="font-medium">Wishlist</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="p-6 border-t border-gray-100 bg-gray-50">
+                  <Button className="w-full bg-black text-white hover:bg-gray-800">
+                    Sign In / Join
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
