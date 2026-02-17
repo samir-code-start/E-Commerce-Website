@@ -13,7 +13,7 @@ interface CurrencyContextType {
 const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined);
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-    const [currency, setCurrency] = useState<Currency>('USD');
+    const [currency, setCurrency] = useState<Currency>('INR');
 
     const EXCHANGE_RATE = 85; // 1 USD = 85 INR
 
